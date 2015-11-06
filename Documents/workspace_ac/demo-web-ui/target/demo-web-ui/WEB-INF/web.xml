@@ -1,0 +1,62 @@
+
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="web-app" version="3.0">
+         
+    
+  	<!--  Copy the content of resources/goodies/web_mongo_jersey.xml to run the example demo. -->
+  	 <display-name>Demo</display-name>
+  	 
+  	 
+  	  <!-- Servlet Configuration settings -->
+
+    <servlet>
+        <servlet-name>REST Services</servlet-name> 
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>com.neusoft.demo.web,com.neusoft.demo.web.core.jersey</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>REST Services</servlet-name>
+    	<url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+    <!-- end of configuration settings -->
+    
+   
+    <!--  Configuration settings for result paging -->
+    <context-param>
+        <param-name>pageSize</param-name>
+        <param-value>50</param-value>
+    </context-param>
+    <context-param>
+        <param-name>order</param-name>
+        <param-value>ASC</param-value>
+    </context-param>
+    <!-- end of configuration settings -->
+  	 
+  	 <!-- Configuration settings for the workflow manager -->
+  	<context-param>
+  		<param-name>carpooling:pushdata:url</param-name>
+  		 <!-- <param-value>http://115.146.85.157/iddss-service/services/ibmeva/pushresult </param-value>   -->
+  		 <!--  <param-value>http://115.146.84.245/iddss-service/services/ibmeva/pushresult?datajson </param-value>  -->
+  		 <param-value>http://localhost:9080/demo-web-ui/api/jobs</param-value>  
+  		
+  	</context-param>
+	<!-- end of configuration settings -->
+
+	  	<!-- Configuration settings for the resource path -->
+  	<context-param>
+  		<param-name>resourcePath</param-name>
+  		<!-- <param-value>/Users/yiniwang/projects/eva-iddss/iddss-eva/src/main/resources/files/</param-value> -->
+  		<param-value>files/</param-value>
+  	</context-param>
+	<!-- end of configuration settings -->
+  	 
+  	 
+</web-app>
